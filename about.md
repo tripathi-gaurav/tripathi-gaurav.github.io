@@ -4,15 +4,8 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Hello, procrastintors! I am Master's student (does that make me master procrastintor?) at Northeastern University, Boston. I am currently pursing [MS in Cybersecurity](https://www.ccis.northeastern.edu/program/cybersecurity-ms/).
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+I will put GPG key here soon, in case you wish to reach out to me.
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+Click here to [get my CV]({{ "/assets/Gaurav_Tripathi_Resume.pdf" | absolute_url }}).

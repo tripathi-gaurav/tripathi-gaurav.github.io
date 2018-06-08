@@ -16,8 +16,8 @@
 title: Gaurav Tripathi
 email: firstname@lastname.org
 description: >- # this means to ignore newlines until "baseurl:"
-  Hi, my name is Gaurav Tripathi. I am a programmer by compulsion who happens to know a thing or two about security.
-  Currently a Master's student at Northeastern University. Welcome to my blog.
+  Hi, my name is Gaurav Tripathi. I am a programmer who happens to know a thing or two about security.
+  Currently a Master's student at Northeastern University, Boston. Welcome to my blog! :)
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "tripathi.org" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: madvirus420
