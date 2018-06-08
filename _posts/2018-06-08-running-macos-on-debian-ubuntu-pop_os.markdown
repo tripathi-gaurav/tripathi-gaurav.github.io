@@ -14,7 +14,6 @@ Instead of looking for a Hackintosh image, I tried using a [Vagrant][vagrant-dow
   `sudo apt-get install virtualbox-guest-utils virtualbox-guest-x11 virtualbox-guest-dkms`
 
 1. Setup Vagrant by downloading the appropriate Vagrant DEB package from Vagrant's [download page][vagrant-download]
-Jekyll also offers powerful support for code snippets:
 
 
 ## 2. Meat
