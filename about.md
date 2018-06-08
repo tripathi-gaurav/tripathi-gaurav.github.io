@@ -8,4 +8,4 @@ Hello, procrastinator! I am Master's student (does that make me master procrasti
 
 I will put GPG key here soon, in case you wish to reach out to me.
 
-Click here to [get my CV]({{ "/assets/Gaurav_Tripathi_Resume.pdf" | absolute_url }}).
+Click here to [get my CV]({{ "/assets/Gaurav_Tripathi_Resume.pdf" | url }}).
