@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Security analysis of Docker containers"
-date:   2018-06-25 23:27:07 -0400
+date:   2018-06-25 23:00:00 -0400
 categories: technology security
 ---
 
