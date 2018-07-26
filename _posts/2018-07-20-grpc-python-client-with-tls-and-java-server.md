@@ -9,7 +9,7 @@ categories: technology security
 
 I decided to take a stab at establishing a secure RPC communication line between a [`gRPC-Java` server](https://github.com/tripathi-gaurav/gRPC-demo-server) and an [`Python` client](https://github.com/tripathi-gaurav/gRPC-demo-client-py).
 
-In this post and related GitHub repositories, you should be able to run the client and server, without having to go and study the `Protobuf` and `gRPC` documentation. The post requires understand of `Maven` package management tool to clean and build dependencies.
+In this post and related GitHub repositories, you should be able to run the client and server, without having to go and study the `Protobuf` and `gRPC` documentation. The post requires understanding of `Maven` package management tool to clean and build dependencies.
 
 Also, I was able to develop and `Android` client to the `gRPC-java` server and communicate between them without `TLS` encryption. So, you can choose to skip Step-1 and Step-2 after completing Step-0.
 
@@ -18,7 +18,7 @@ Also, I was able to develop and `Android` client to the `gRPC-java` server and c
 NetBeans also needs a similar exercise, whereas IntelliJ does not have any such constraint.
 
 2. Create a new Maven Project in your IDE and copy add the following in your `POM.xml` file as mentioned [here](https://github.com/grpc/grpc-java).
-These compile rules helps us generate code to be used for RPC.
+These compile rules help us generate code to be used for RPC.
 
 ```xml
 <build>
@@ -84,9 +84,9 @@ message HelloReply {
 }
 ```
 
-2. Once the stubs are created in the `target` directory, we can start using them to write our server end. Server end will require:
+ 2. Once the stubs are created in the `target` directory, we can start using them to write our server end. Server end will require:
 
-  A. Implement the `GreeterImplBase` class to override the `SayHello` and `SayHelloAgain` methods.
+#####  A. Implement the `GreeterImplBase` class to override the `SayHello` and `SayHelloAgain` methods.
 
 
 ```java
@@ -108,7 +108,7 @@ static class GreeterImpl extends GreeterGrpc.GreeterImplBase {
 ```
 Final file can [referenced here](https://github.com/tripathi-gaurav/gRPC-demo-server/blob/master/src/main/java/org/tripathi/grpc/hellodroidtls/HelloDroidTLSServer.java).
 
-  B. Create a server stub to listen and respond to RPC calls
+#####  B. Create a server stub to listen and respond to RPC calls
 
   From [gRPC Basic - Java docs](https://grpc.io/docs/tutorials/basic/java.html):
 
