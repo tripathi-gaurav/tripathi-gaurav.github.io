@@ -5,9 +5,13 @@ date:   2018-06-20 23:27:07 -0400
 categories: technology security
 ---
 
-`gRPC` is an Open Source piece of technology that comes out from the Google factory. It enables a user to create a `.proto` specification file, and generate basic client and server stubs in as many as 9 languages. `gRPC` works strictly with HTTP2 alone and also comes with inbuilt TLS capabilities. `gRPC` also says that it does not transfer credentials without encryption over the wire.
+`gRPC` is an Open Source piece of technology that comes out from the Google factory. It enables a user to use a `.proto` specification file to generate basic client and server stubs in as many as nine languages. `gRPC` works strictly with HTTP2 alone and also comes with inbuilt TLS capabilities. `gRPC` also says that it does not transfer credentials without encryption over the wire.
 
-I decided to take a stab at establishing a secure RPC communication line between a `gRPC-Java` server and an `Python` client.
+I decided to take a stab at establishing a secure RPC communication line between a [`gRPC-Java` server](https://github.com/tripathi-gaurav/gRPC-demo-server) and an [`Python` client](https://github.com/tripathi-gaurav/gRPC-demo-client-py).
+
+In this post and related GitHub repositories, you should be able to run the client and server, without having to go and study the `Protobuf` and `gRPC` documentation. The post requires understand of `Maven` package management tool to clean and build dependencies.
+
+Also, I was able to develop and `Android` client to the `gRPC-java` server and communicate between them without `TLS` encryption. So, you can choose to skip Step-1 and Step-2 after completing Step-0.
 
 # Step-0: Creating an unencrypted gRPC server
 1. If you are using Maven and Eclipse, you will need to download the jar `maven-os-plugin` as mentioned [here](https://github.com/trustin/os-maven-plugin#issues-with-eclipse-m2e-or-other-ides) and place it in `<ECLIPSE_HOME>/plugins` folder.
@@ -51,7 +55,7 @@ These compile rules helps us generate code to be used for RPC.
 
 ## Creating/Generating the Server side code
 
-1. Create a `.proto` file in the root directory, with package option set to map against the one we want to use, in my case `org.tripathi.grpc.hellodroidtls`.
+1. Create a `.proto` file in the root directory, with package option set to map against the one we want to use, in my case `org.tripathi.grpc.hellodroidtls`. This document defines two methods, `SayHello` and `SayHelloAgain`. We only use `SayHello` method in our calls. Note that I have used the package name `hellodroidtls`, as I initially intended to write an `Android` client instead of `Python` client.
 
 ```java
 syntax = "proto3";
@@ -80,7 +84,7 @@ message HelloReply {
 }
 ```
 
-2. Once the stubs ares created in the `target` directory, we can start using them to write our server end. Server end will require:
+2. Once the stubs are created in the `target` directory, we can start using them to write our server end. Server end will require:
 
   A. Implement the `GreeterImplBase` class to override the `SayHello` and `SayHelloAgain` methods.
 
@@ -102,8 +106,11 @@ static class GreeterImpl extends GreeterGrpc.GreeterImplBase {
     }
   }
 ```
+Final file can [referenced here](https://github.com/tripathi-gaurav/gRPC-demo-server/blob/master/src/main/java/org/tripathi/grpc/hellodroidtls/HelloDroidTLSServer.java).
 
   B. Create a server stub to listen and respond to RPC calls
+
+  From [gRPC Basic - Java docs](https://grpc.io/docs/tutorials/basic/java.html):
 
   1. Specify the address and port we want to use to listen for client requests using the builder’s `forPort()` method.
   2. Create an instance of our service implementation class RouteGuideService and pass it to the builder’s `addService()` method.
@@ -150,7 +157,7 @@ static class GreeterImpl extends GreeterGrpc.GreeterImplBase {
 /** == End of Code to drive the server == */
   ```
 
-Finally, you just need to add write the `main` method to call start your server:
+Finally, you just need to add the `main` method to start your server:
 ```java
 public static void main(String[] args) throws IOException, InterruptedException {
   final HelloDroidTLSServer server = new HelloDroidTLSServer();
@@ -162,7 +169,7 @@ public static void main(String[] args) throws IOException, InterruptedException 
 
 # Step-1: Adding TLS capability to Server
 
-Since, we need CA certificates for TLS/SSL based encryption, one will have to create server certificates and add it to CA certs for the server. A simple script to do so can be found [here](https://github.com/grpc/grpc-java/tree/master/examples#generating-self-signed-certificates-for-use-with-grpc). The recommended approach for TLS with `gRPC` is to use TLS with `OpenSSL` using `netty-tcnative-boringssl-static`. Therefore, we need to add the following dependency to our POM.xml file:
+Since, we need CA certificates for TLS/SSL based encryption, we will generate self-signed certificates and add it to CA certs for the server. A simple script to do so can be found [here](https://github.com/grpc/grpc-java/tree/master/examples#generating-self-signed-certificates-for-use-with-grpc). The recommended approach for TLS with `gRPC` is to use TLS with `OpenSSL` using `netty-tcnative-boringssl-static`. Therefore, we need to add the following dependency to our POM.xml file:
 
   ```XML
   <dependencies>
@@ -175,6 +182,7 @@ Since, we need CA certificates for TLS/SSL based encryption, one will have to cr
   ```
 
 We now need to modify the server startup code slightly to enable TLS.
+Final file can [referenced here](https://github.com/tripathi-gaurav/gRPC-demo-server/blob/master/src/main/java/org/tripathi/grpc/hellodroidtls/HelloDroidTLSServer.java).
 
 ```java
 String certChainFile = "/path/to/server.crt";
