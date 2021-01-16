@@ -4,8 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Hello, procrastinator! I am Master's student (does that make me master procrastinator?) at Northeastern University, Boston. I am currently pursing [MS in Cybersecurity](https://www.ccis.northeastern.edu/program/cybersecurity-ms/).
-
-I will put GPG key here soon, in case you wish to reach out to me.
+Hello, procrastinator! I am a programmer at Microsoft. Trust me, I have intentions to keep my blob updated.
 
 Click here to [get my CV]({{ "/assets/Gaurav_Tripathi_Resume.pdf" | url }}).
+Yes, I know the link to my CV is broken.
